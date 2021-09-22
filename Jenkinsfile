@@ -6,26 +6,34 @@ pipeline {
 		stage('Build'){
 			steps{
 				echo "Build"
-				echo "Test"
-				echo "Integration Test"
+				
 
 			}
 		}
 		stage('Test'){
 			steps{
-				echo "Build"
+				
 				echo "Test"
-				echo "Integration Test"
+				
 
 			}
 		}
 		stage('Integration Test'){
 			steps{
-				echo "Build"
-				echo "Test"
+				
 				echo "Integration Test"
 
 			}
+		}
+	} post {
+		always{
+			echo'I am awesome. i run always'
+		}
+		success{
+			echo 'I run when when you success'
+		}
+		failure{
+			echo 'I run when you fail'
 		}
 	}
 	

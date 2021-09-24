@@ -2,12 +2,16 @@
 //declarative pipe line
 pipeline {
 	agent any
+	tools {
+		maven 'myMaven'
+		dockerTool 'myDocker'
+	}
 	//agent { docker { image 'maven:3.6.3'}}
 	environment {
 
-		dockerHome = tool 'myDocker'
-		mavenHome = tool 'myMaven'
-		PATH = "$dockerHome/bin:/$mavenHomeHome/bin:$PATH"
+		dockerHome = 'myDocker'
+		mavenHome = 'myMaven'
+		PATH="/dockerHome/bin:mavenHome:$PATH"
 	}
 	stages{
 		stage('Build'){

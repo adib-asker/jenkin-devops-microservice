@@ -67,9 +67,10 @@ pipeline {
 		stage('Push Docker Image'){
 			steps{
 				script{
+					
 					docker.withRegistry('', 'dockerhub') {
-					dockerImage.push();
-					dockerImage.push('latest');
+					docker.build("amiadib123/currency-exchange-devops:${env.BUILD_TAG}").push();
+					docker.build("amiadib123/currency-exchange-devops:${env.BUILD_TAG}").push('latest');
 				}
 			}
 			}
